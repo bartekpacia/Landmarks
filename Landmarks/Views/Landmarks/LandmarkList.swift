@@ -3,6 +3,8 @@ import SwiftUI
 struct LandmarkList: View {
   @EnvironmentObject var modelData: ModelData
   @State private var showFavoritesOnly = false
+  @State private var username = ""
+  @State private var password = ""
 
   var filteredLandmarks: [Landmark] {
     modelData.landmarks.filter { landmark in
@@ -17,6 +19,10 @@ struct LandmarkList: View {
   var body: some View {
     NavigationView {
       List {
+        Text("lol")
+        TextField("username", text: $username)
+        SecureField("password", text: $password)
+          .accessibilityLabel("username")
         Toggle(isOn: $showFavoritesOnly) {
           Text("Favorites only")
         }
