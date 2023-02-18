@@ -35,8 +35,8 @@ struct LandmarkList: View {
             LandmarkDetail(landmark: landmark)
           } label: {
             LandmarkRow(landmark: landmark)
-          }
-          .navigationTitle("LandmarksXD")
+          }.accessibilityIdentifier("Siema \(landmark.name)")
+            .navigationTitle("Landmarks")
         }
       }
     }
