@@ -5,6 +5,7 @@ struct LandmarkList: View {
   @State private var showFavoritesOnly = false
   @State private var username = ""
   @State private var password = ""
+  @State private var email = ""
 
   var filteredLandmarks: [Landmark] {
     modelData.landmarks.filter { landmark in
@@ -19,10 +20,13 @@ struct LandmarkList: View {
   var body: some View {
     NavigationView {
       List {
-        Text("lol")
         TextField("username", text: $username)
         SecureField("password", text: $password)
           .accessibilityLabel("username")
+        TextField("email", text: $email)
+        Button("Landmarks") {
+          showFavoritesOnly = !showFavoritesOnly
+        }
         Toggle(isOn: $showFavoritesOnly) {
           Text("Favorites only")
         }
@@ -32,7 +36,7 @@ struct LandmarkList: View {
           } label: {
             LandmarkRow(landmark: landmark)
           }
-          .navigationTitle("Landmarks")
+          .navigationTitle("LandmarksXD")
         }
       }
     }
