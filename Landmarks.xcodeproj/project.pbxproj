@@ -32,7 +32,6 @@
 		98CF8FD728B29C8100993DE6 /* HikeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF8FD328B29C8100993DE6 /* HikeDetail.swift */; };
 		98CF8FD828B29C8100993DE6 /* HikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF8FD428B29C8100993DE6 /* HikeView.swift */; };
 		98E2DE0E28F92D11004BB04E /* LandmarksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2DE0D28F92D11004BB04E /* LandmarksUITests.swift */; };
-		98E2DE1028F92D11004BB04E /* LandmarksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2DE0F28F92D11004BB04E /* LandmarksUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +72,6 @@
 		98CF8FD428B29C8100993DE6 /* HikeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HikeView.swift; sourceTree = "<group>"; };
 		98E2DE0B28F92D11004BB04E /* LandmarksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LandmarksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E2DE0D28F92D11004BB04E /* LandmarksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksUITests.swift; sourceTree = "<group>"; };
-		98E2DE0F28F92D11004BB04E /* LandmarksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				98E2DE0D28F92D11004BB04E /* LandmarksUITests.swift */,
-				98E2DE0F28F92D11004BB04E /* LandmarksUITestsLaunchTests.swift */,
 			);
 			path = LandmarksUITests;
 			sourceTree = "<group>";
@@ -345,7 +342,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98E2DE1028F92D11004BB04E /* LandmarksUITestsLaunchTests.swift in Sources */,
 				98E2DE0E28F92D11004BB04E /* LandmarksUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
