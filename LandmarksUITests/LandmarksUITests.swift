@@ -8,6 +8,33 @@ final class LandmarksUITests: XCTestCase {
     continueAfterFailure = false
     app.launch()
   }
+  
+  // This is a fix for webview_leancode_test.dart that should be made to package:patrol
+  func testPatrolExampleApp() throws {
+    let patrolApp = XCUIApplication(bundleIdentifier: "pl.leancode.patrol.Example")
+    patrolApp.activate()
+    patrolApp.descendants(matching: .any)["Open webview (LeanCode)"].tap()
+    // patrolApp.descendants(matching: .any)["Accept cookies"].tap()
+    patrolApp.descendants(matching: .any).matching(identifier: "What do you do in IT?").element(boundBy: 1).tap()
+    
+    
+    // patrolApp.descendants(matching: .any)["Developer"].firstMatch.tap()
+    
+    let arg = "Developer"
+    let format = """
+      identifier == %@ OR \
+      title == %@ OR \
+      label == %@ OR \
+      value == %@ OR \
+      placeholderValue == %@
+      """
+    let predicate = NSPredicate(format: format, arg, arg, arg, arg, arg)
+    let element = patrolApp.descendants(matching: .any).matching(predicate)
+    element.firstMatch.tap()
+    
+    patrolApp.descendants(matching: .any).matching(identifier: "What do you do in IT?").element(boundBy: 1).tap()
+    
+  }
 
   func testNormal() throws {
     let element = app.descendants(matching: .any)["Turtle Rock"]
