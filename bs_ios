@@ -1,38 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ "$(patrol --version)" != *"v2.0.0"* ]]; then
-	echo "Error: patrol_cli v2 is required"
-	exit 1
-fi
-
-# Build process on iOS is very slow, so some commands are disabled.
-# See also ios_notes.md
-
-if false; then
-  patrol build ios --release
-fi
-
-if false; then
-  xcodebuild archive \
-    -archivePath iOSApp.xcarchive \
-    -workspace Runner.xcworkspace \
-    -configuration Release \
-    -scheme Runner \
-    -sdk iphoneos \
-    -destination 'generic/platform=iOS' \
-    OTHER_SWIFT_FLAGS='$(inherited) -D PATROL_ENABLED' \
-    -quiet
-fi
-
-if false; then
-  # This requires ExportOptions.plist. Copy its contents from ios_notes.md
-  xcodebuild \
-    -exportArchive \
-    -archivePath iOSApp.xcarchive \
-    -exportPath Release/MyApp \
-    -exportOptionsPlist ExportOptions.plist
-fi
+# This script assumes that:
+#  * target "Landmarks" has been built into an IPA
+#  * target "LandmarksUITests" has been built with "xcodebuilt build-for-testing"
 
 app_upload_response="$(
 	curl -u "$CREDS" \
@@ -46,8 +17,8 @@ echo "Uploaded app, url: $app_url"
 echo "Will zip tests now"
 cd build/ios_integ/Build/Products/Release-iphoneos
 rm -f ios_tests.zip
-cp ../Landmarks_iphoneos*.xctestrun .
-zip -r ios_tests.zip LandmarksUITests-Runner.app
+cp ../Landmarks_Landmarks_iphoneos*.xctestrun .
+zip -r --symlinks ios_tests.zip Landmarks_Landmarks_iphoneos*.xctestrun LandmarksUITests-Runner.app
 cd -
 
 test_upload_response="$(
@@ -61,9 +32,8 @@ echo "Uploaded test, url: $test_url"
 
 echo "Will schedule test execution now"
 
-`# /xctestrun-build`
 curl -u "$CREDS" \
-  -X POST "https://api-cloud.browserstack.com/app-automate/xcuitest/v2/build" \
+  -X POST "https://api-cloud.browserstack.com/app-automate/xcuitest/v2/xctestrun-build" \
   -H "Content-Type: application/json" \
   --data-binary @- <<EOF
 {
@@ -81,3 +51,4 @@ EOF
 #     "only-testing": [
 #       "RunnerUITests/RunnerUITests",
 #     ]
+#

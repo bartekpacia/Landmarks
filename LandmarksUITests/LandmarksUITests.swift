@@ -4,8 +4,7 @@ final class LandmarksUITests: XCTestCase {
 
   let app = XCUIApplication()
 
-  override func setUpWithError() throws {
-    continueAfterFailure = false
+  override func setUp() {
     app.launch()
   }
   
