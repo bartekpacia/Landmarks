@@ -47,7 +47,7 @@ echo "Will zip tests now"
 cd build/ios_integ/Build/Products/Release-iphoneos
 rm -f ios_tests.zip
 cp ../Landmarks_iphoneos*.xctestrun .
-zip -r ios_tests.zip Landmarks_iphoneos*.xctestrun LandmarksUITests-Runner.app
+zip -r ios_tests.zip LandmarksUITests-Runner.app
 cd -
 
 test_upload_response="$(
@@ -61,7 +61,8 @@ echo "Uploaded test, url: $test_url"
 
 echo "Will schedule test execution now"
 
-curl -u "$CREDS" \                                                  # /xctestrun-build
+`# /xctestrun-build`
+curl -u "$CREDS" \
   -X POST "https://api-cloud.browserstack.com/app-automate/xcuitest/v2/build" \
   -H "Content-Type: application/json" \
   --data-binary @- <<EOF
@@ -69,7 +70,8 @@ curl -u "$CREDS" \                                                  # /xctestrun
     "app": "$app_url",
     "testSuite": "$test_url",
     "project": "Landmarks",
-    "devices": ["iPhone 14-16"]
+    "devices": ["iPhone 14-16"],
+    "deviceLogs": "true"
 }
 EOF
 
