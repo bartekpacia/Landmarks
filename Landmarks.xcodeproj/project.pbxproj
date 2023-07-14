@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9829FF322A614BC1005BC4BB /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 9829FF312A614BC1005BC4BB /* Fakery */; };
+		9829FF352A6150EE005BC4BB /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 9829FF342A6150EE005BC4BB /* Fakery */; };
 		98A2611E28B169B900FEE658 /* LandmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2611D28B169B900FEE658 /* LandmarksApp.swift */; };
 		98A2612028B169B900FEE658 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2611F28B169B900FEE658 /* ContentView.swift */; };
 		98A2612228B169BA00FEE658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98A2612128B169BA00FEE658 /* Assets.xcassets */; };
@@ -80,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9829FF322A614BC1005BC4BB /* Fakery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,12 +90,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9829FF352A6150EE005BC4BB /* Fakery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9829FF332A6150EE005BC4BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		98A2611128B169B900FEE658 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +111,7 @@
 				98A2611C28B169B900FEE658 /* Landmarks */,
 				98E2DE0C28F92D11004BB04E /* LandmarksUITests */,
 				98A2611B28B169B900FEE658 /* Products */,
+				9829FF332A6150EE005BC4BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,6 +243,9 @@
 			dependencies = (
 			);
 			name = Landmarks;
+			packageProductDependencies = (
+				9829FF312A614BC1005BC4BB /* Fakery */,
+			);
 			productName = Landmarks;
 			productReference = 98A2611A28B169B900FEE658 /* Landmarks.app */;
 			productType = "com.apple.product-type.application";
@@ -249,6 +264,9 @@
 				98E2DE1228F92D11004BB04E /* PBXTargetDependency */,
 			);
 			name = LandmarksUITests;
+			packageProductDependencies = (
+				9829FF342A6150EE005BC4BB /* Fakery */,
+			);
 			productName = LandmarksUITests;
 			productReference = 98E2DE0B28F92D11004BB04E /* LandmarksUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -281,6 +299,9 @@
 				Base,
 			);
 			mainGroup = 98A2611128B169B900FEE658;
+			packageReferences = (
+				9829FF302A614BC1005BC4BB /* XCRemoteSwiftPackageReference "Fakery" */,
+			);
 			productRefGroup = 98A2611B28B169B900FEE658 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -600,6 +621,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9829FF302A614BC1005BC4BB /* XCRemoteSwiftPackageReference "Fakery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vadymmarkov/Fakery#usage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9829FF312A614BC1005BC4BB /* Fakery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9829FF302A614BC1005BC4BB /* XCRemoteSwiftPackageReference "Fakery" */;
+			productName = Fakery;
+		};
+		9829FF342A6150EE005BC4BB /* Fakery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9829FF302A614BC1005BC4BB /* XCRemoteSwiftPackageReference "Fakery" */;
+			productName = Fakery;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 98A2611228B169B900FEE658 /* Project object */;
 }

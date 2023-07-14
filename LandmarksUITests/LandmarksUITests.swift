@@ -1,11 +1,54 @@
 import XCTest
+import Fakery
 
 final class LandmarksUITests: XCTestCase {
 
   let app = XCUIApplication()
+  
+  let faker = Faker()
+  let contactsApp = XCUIApplication(bundleIdentifier: "com.apple.MobileAddressBook")
 
   override func setUp() {
     app.launch()
+  }
+  
+  func testCreateContacts() throws {
+    contactsApp.activate()
+    createContact()
+    createContact()
+  }
+  
+  private func createContact() -> String {
+    let firstName = faker.name.firstName()
+    let lastName = faker.name.lastName()
+    
+    contactsApp.descendants(matching: .any)["Add"].tap()
+    
+    contactsApp.textFields.element(boundBy: 0).tap()
+    contactsApp.textFields.element(boundBy: 0).typeText(firstName)
+    
+    contactsApp.textFields.element(boundBy: 1).tap()
+    contactsApp.textFields.element(boundBy: 1).typeText(lastName)
+    
+    contactsApp.textFields.element(boundBy: 2).tap()
+    contactsApp.textFields.element(boundBy: 2).typeText("\(faker.company.name())\n")
+    
+    contactsApp.descendants(matching: .any)["add phone"].firstMatch.tap()
+    contactsApp.textFields["Phone"].typeText("\(faker.phoneNumber.cellPhone())\n")
+    
+    contactsApp.descendants(matching: .any)["add email"].firstMatch.tap()
+    contactsApp.textFields["Email"].typeText(faker.internet.email())
+    
+    contactsApp.descendants(matching: .any)["Done"].tap()
+    
+    // go back
+    contactsApp.descendants(matching: .any)["iPhone"].tap()
+    
+    return "\(firstName) \(lastName)"
+  }
+  
+  func createNewContact(firstName: String, lastName: String) {
+    
   }
   
   // This is a fix for webview_leancode_test.dart that should be made to package:patrol
