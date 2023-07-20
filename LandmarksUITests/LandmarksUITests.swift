@@ -1,5 +1,6 @@
 import XCTest
 import Fakery
+import OSLog
 
 final class LandmarksUITests: XCTestCase {
 
@@ -7,6 +8,7 @@ final class LandmarksUITests: XCTestCase {
   
   let faker = Faker()
   let contactsApp = XCUIApplication(bundleIdentifier: "com.apple.MobileAddressBook")
+  let settingsApp = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
 
   override func setUp() {
     app.launch()
@@ -16,6 +18,33 @@ final class LandmarksUITests: XCTestCase {
     contactsApp.activate()
     createContact()
     createContact()
+  }
+  
+  func testListViewsInSettings() {
+    let TAG = "TEST"
+    let app = settingsApp
+    let text = "Screen Time"
+    app.activate()
+    
+    NSLog("OS VERSSSSIOON: \((UIDevice.current.systemVersion as NSString).floatValue)")
+    
+    // let elements = app.descendants(matching: .any)["Screen Time"].otherElements.allElementsBoundByIndex
+    
+    
+    let format = """
+      label == %@
+      """
+    let predicate = NSPredicate(format: format, text)
+    let elements = app.descendants(matching: .any).matching(predicate).allElementsBoundByIndex
+
+    let views = elements.map { xcuielement in
+      NSLog("\(TAG): label: \(xcuielement.label), title: \(xcuielement.title), ident: \(xcuielement.identifier), type: \(xcuielement.elementType)")
+      NSLog("\(TAG): type:")
+      
+      return xcuielement.label
+    }
+    
+    NSLog("\(TAG): found \(views.count) views")
   }
   
   private func createContact() -> String {
