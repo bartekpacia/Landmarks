@@ -1,11 +1,11 @@
-import XCTest
 import Fakery
 import OSLog
+import XCTest
 
 final class LandmarksUITests: XCTestCase {
 
   let app = XCUIApplication()
-  
+
   let faker = Faker()
   let contactsApp = XCUIApplication(bundleIdentifier: "com.apple.MobileAddressBook")
   let settingsApp = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
@@ -13,24 +13,39 @@ final class LandmarksUITests: XCTestCase {
   override func setUp() {
     app.launch()
   }
-  
+
+  func testTapOnSecondLandmarksView() {
+    let text = "Landmarks"
+    let index = 2
+
+    let format = """
+      label == %@ OR \
+      title == %@ OR \
+      identifier == %@
+      """
+    let predicate = NSPredicate(format: format, text, text, text)
+    let query = app.descendants(matching: .any).matching(predicate)
+
+    query.allElementsBoundByIndex[index].tap()
+
+  }
+
   func testCreateContacts() throws {
     contactsApp.activate()
     createContact()
     createContact()
   }
-  
+
   func testListViewsInSettings() {
     let TAG = "TEST"
     let app = settingsApp
     let text = "Screen Time"
     app.activate()
-    
+
     NSLog("OS VERSSSSIOON: \((UIDevice.current.systemVersion as NSString).floatValue)")
-    
+
     // let elements = app.descendants(matching: .any)["Screen Time"].otherElements.allElementsBoundByIndex
-    
-    
+
     let format = """
       label == %@
       """
@@ -38,59 +53,62 @@ final class LandmarksUITests: XCTestCase {
     let elements = app.descendants(matching: .any).matching(predicate).allElementsBoundByIndex
 
     let views = elements.map { xcuielement in
-      NSLog("\(TAG): label: \(xcuielement.label), title: \(xcuielement.title), ident: \(xcuielement.identifier), type: \(xcuielement.elementType)")
+      NSLog(
+        "\(TAG): label: \(xcuielement.label), title: \(xcuielement.title), ident: \(xcuielement.identifier), type: \(xcuielement.elementType)"
+      )
       NSLog("\(TAG): type:")
-      
+
       return xcuielement.label
     }
-    
+
     NSLog("\(TAG): found \(views.count) views")
   }
-  
+
   private func createContact() -> String {
     let firstName = faker.name.firstName()
     let lastName = faker.name.lastName()
-    
+
     contactsApp.descendants(matching: .any)["Add"].tap()
-    
+
     contactsApp.textFields.element(boundBy: 0).tap()
     contactsApp.textFields.element(boundBy: 0).typeText(firstName)
-    
+
     contactsApp.textFields.element(boundBy: 1).tap()
     contactsApp.textFields.element(boundBy: 1).typeText(lastName)
-    
+
     contactsApp.textFields.element(boundBy: 2).tap()
     contactsApp.textFields.element(boundBy: 2).typeText("\(faker.company.name())\n")
-    
+
     contactsApp.descendants(matching: .any)["add phone"].firstMatch.tap()
     contactsApp.textFields["Phone"].typeText("\(faker.phoneNumber.cellPhone())\n")
-    
+
     contactsApp.descendants(matching: .any)["add email"].firstMatch.tap()
     contactsApp.textFields["Email"].typeText(faker.internet.email())
-    
+
     contactsApp.descendants(matching: .any)["Done"].tap()
-    
+
     // go back
     contactsApp.descendants(matching: .any)["iPhone"].tap()
-    
+
     return "\(firstName) \(lastName)"
   }
-  
+
   func createNewContact(firstName: String, lastName: String) {
-    
+
   }
-  
+
   // This is a fix for webview_leancode_test.dart that should be made to package:patrol
   func testPatrolExampleApp() throws {
     let patrolApp = XCUIApplication(bundleIdentifier: "pl.leancode.patrol.Example")
     patrolApp.activate()
     patrolApp.descendants(matching: .any)["Open webview (LeanCode)"].tap()
     // patrolApp.descendants(matching: .any)["Accept cookies"].tap()
-    patrolApp.descendants(matching: .any).matching(identifier: "What do you do in IT?").element(boundBy: 1).tap()
-    
-    
+    patrolApp.descendants(matching: .any).matching(identifier: "What do you do in IT?").element(
+      boundBy: 1
+    ).tap()
+
     // patrolApp.descendants(matching: .any)["Developer"].firstMatch.tap()
-    
+
     let arg = "Developer"
     let format = """
       identifier == %@ OR \
@@ -102,9 +120,11 @@ final class LandmarksUITests: XCTestCase {
     let predicate = NSPredicate(format: format, arg, arg, arg, arg, arg)
     let element = patrolApp.descendants(matching: .any).matching(predicate)
     element.firstMatch.tap()
-    
-    patrolApp.descendants(matching: .any).matching(identifier: "What do you do in IT?").element(boundBy: 1).tap()
-    
+
+    patrolApp.descendants(matching: .any).matching(identifier: "What do you do in IT?").element(
+      boundBy: 1
+    ).tap()
+
   }
 
   func testNormal() throws {
