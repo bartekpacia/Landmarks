@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# This script assumes that:
+#  * target "Landmarks" has been built into an IPA
+#  * target "LandmarksUITests" has been built with "xcodebuilt build-for-testing"
+
+app_upload_response="$(
+	curl -u "$CREDS" \
+		-X POST "https://api-cloud.browserstack.com/app-automate/xcuitest/v2/app" \
+		-F "file=@$PWD/LandmarksIPA/Landmarks.ipa"
+)"
+
+app_url="$(echo "$app_upload_response" | jq --raw-output .app_url)"
+echo "Uploaded app, url: $app_url"
+
+echo "Will zip tests now"
+cd build/ios_integ/Build/Products/Release-iphoneos
+rm -f ios_tests.zip
+cp ../Landmarks_Landmarks_iphoneos*.xctestrun .
+zip -r --symlinks ios_tests.zip Landmarks_Landmarks_iphoneos*.xctestrun LandmarksUITests-Runner.app
+cd -
+
+test_upload_response="$(
+	curl -u "$CREDS" \
+		-X POST "https://api-cloud.browserstack.com/app-automate/xcuitest/v2/test-suite" \
+		-F "file=@$PWD/build/ios_integ/Build/Products/Release-iphoneos/ios_tests.zip"
+)"
+
+test_url="$(echo "$test_upload_response" | jq --raw-output .test_suite_url)"
+echo "Uploaded test, url: $test_url"
+
+echo "Will schedule test execution now"
+
+curl -u "$CREDS" \
+  -X POST "https://api-cloud.browserstack.com/app-automate/xcuitest/v2/xctestrun-build" \
+  -H "Content-Type: application/json" \
+  --data-binary @- <<EOF
+{
+    "app": "$app_url",
+    "testSuite": "$test_url",
+    "project": "Landmarks",
+    "devices": ["iPhone 14-16"],
+    "deviceLogs": "true"
+}
+EOF
+
+
+# "deviceLogs": "true",
+#     "dynamicTests": "true",
+#     "only-testing": [
+#       "RunnerUITests/RunnerUITests",
+#     ]
+#

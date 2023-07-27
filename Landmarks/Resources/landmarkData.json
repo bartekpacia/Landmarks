@@ -16,6 +16,22 @@
         "imageName": "turtlerock"
     },
     {
+        "name": "Turtle Rock",
+        "category": "Rivers",
+        "city": "Twentynine Palms",
+        "state": "California",
+        "id": 6969,
+        "isFeatured": true,
+        "isFavorite": true,
+        "park": "Joshua Tree National Park",
+        "coordinates": {
+            "longitude": -116.166868,
+            "latitude": 34.011286
+        },
+        "description": "THE FAKE ONEEEEEEE",
+        "imageName": "turtlerock"
+    },
+    {
         "name": "Silver Salmon Creek",
         "category": "Lakes",
         "city": "Port Alsworth",
