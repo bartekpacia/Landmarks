@@ -18,14 +18,18 @@
 
   NSLog(@"Before the loop, %lu elements in the array", (unsigned long)dartTestFiles.count);
 
+
   for (int i = 0; i < dartTestFiles.count; i++) {
     /* Step 1 */
 
     NSString *name = dartTestFiles[i];
 
     void (^func)(ParametrizedTests *) = ^(ParametrizedTests *instance) {
+      XCUIApplication* app = [[XCUIApplication alloc] init];
+      [app launch];
       NSLog(@"func called!");
       XCTAssertTrue(true, "dummy assert");
+      [NSRunLoop.currentRunLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
     };
 
     IMP implementation = imp_implementationWithBlock(func);
