@@ -18,6 +18,8 @@
 
   NSLog(@"Before the loop, %lu elements in the array", (unsigned long)dartTestFiles.count);
 
+  /* Create second class */
+  Class newTestClass = objc_allocateClassPair([XCTestCase class], "DynamicTests", 0);
 
   for (int i = 0; i < dartTestFiles.count; i++) {
     /* Step 1 */
@@ -35,7 +37,9 @@
     IMP implementation = imp_implementationWithBlock(func);
     NSString *selectorStr = [NSString stringWithFormat:@"test_%@", name];
     SEL selector = NSSelectorFromString(selectorStr);
+
     class_addMethod(self, selector, implementation, "v@:");
+    class_addMethod(newTestClass, selector, implementation, "v@:");
 
     /* Step 2 */
 
@@ -48,7 +52,10 @@
     [invocations addObject:invocation];
   }
 
+  objc_registerClassPair(newTestClass);
+
   NSLog(@"After the loop");
+
 
   return invocations;
 }
