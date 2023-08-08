@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		982285222A824E9F006E2696 /* HierarchicalUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 982285212A824E9F006E2696 /* HierarchicalUITests.m */; };
-		982285272A8264A3006E2696 /* Principal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982285262A8264A3006E2696 /* Principal.swift */; };
+		9822852A2A8268C3006E2696 /* Principal.m in Sources */ = {isa = PBXBuildFile; fileRef = 982285292A8268C3006E2696 /* Principal.m */; };
 		98A2611E28B169B900FEE658 /* LandmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2611D28B169B900FEE658 /* LandmarksApp.swift */; };
 		98A2612028B169B900FEE658 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2611F28B169B900FEE658 /* ContentView.swift */; };
 		98A2612228B169BA00FEE658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98A2612128B169BA00FEE658 /* Assets.xcassets */; };
@@ -49,8 +49,8 @@
 
 /* Begin PBXFileReference section */
 		982285212A824E9F006E2696 /* HierarchicalUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HierarchicalUITests.m; sourceTree = "<group>"; };
-		982285252A8264A2006E2696 /* LandmarksUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LandmarksUITests-Bridging-Header.h"; sourceTree = "<group>"; };
-		982285262A8264A3006E2696 /* Principal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Principal.swift; sourceTree = "<group>"; };
+		982285292A8268C3006E2696 /* Principal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Principal.m; sourceTree = "<group>"; };
+		9822852B2A826F26006E2696 /* Principal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Principal.h; sourceTree = "<group>"; };
 		98A2611A28B169B900FEE658 /* Landmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A2611D28B169B900FEE658 /* LandmarksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksApp.swift; sourceTree = "<group>"; };
 		98A2611F28B169B900FEE658 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -175,8 +175,8 @@
 				98A4EAFE2A811DFA008E4996 /* LandmarksUITests.m */,
 				98A4EB072A81330C008E4996 /* PlaygroundUITests.m */,
 				982285212A824E9F006E2696 /* HierarchicalUITests.m */,
-				982285262A8264A3006E2696 /* Principal.swift */,
-				982285252A8264A2006E2696 /* LandmarksUITests-Bridging-Header.h */,
+				982285292A8268C3006E2696 /* Principal.m */,
+				9822852B2A826F26006E2696 /* Principal.h */,
 			);
 			path = LandmarksUITests;
 			sourceTree = "<group>";
@@ -354,9 +354,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				982285272A8264A3006E2696 /* Principal.swift in Sources */,
 				98A4EB082A81330C008E4996 /* PlaygroundUITests.m in Sources */,
 				98A4EAFF2A811DFA008E4996 /* LandmarksUITests.m in Sources */,
+				9822852A2A8268C3006E2696 /* Principal.m in Sources */,
 				982285222A824E9F006E2696 /* HierarchicalUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,7 +553,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSPrincipalClass = LandmarksUITests.Principal;
+				INFOPLIST_KEY_NSPrincipalClass = Principal;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.pacia.LandmarksUITests;
@@ -576,7 +576,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSPrincipalClass = LandmarksUITests.Principal;
+				INFOPLIST_KEY_NSPrincipalClass = Principal;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.pacia.LandmarksUITests;
