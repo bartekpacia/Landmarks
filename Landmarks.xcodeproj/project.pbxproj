@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		982285222A824E9F006E2696 /* HierarchicalUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 982285212A824E9F006E2696 /* HierarchicalUITests.m */; };
 		98A2611E28B169B900FEE658 /* LandmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2611D28B169B900FEE658 /* LandmarksApp.swift */; };
 		98A2612028B169B900FEE658 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2611F28B169B900FEE658 /* ContentView.swift */; };
 		98A2612228B169BA00FEE658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98A2612128B169BA00FEE658 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		982285212A824E9F006E2696 /* HierarchicalUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HierarchicalUITests.m; sourceTree = "<group>"; };
 		98A2611A28B169B900FEE658 /* Landmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A2611D28B169B900FEE658 /* LandmarksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksApp.swift; sourceTree = "<group>"; };
 		98A2611F28B169B900FEE658 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				98A4EAFE2A811DFA008E4996 /* LandmarksUITests.m */,
 				98A4EB072A81330C008E4996 /* PlaygroundUITests.m */,
+				982285212A824E9F006E2696 /* HierarchicalUITests.m */,
 			);
 			path = LandmarksUITests;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			files = (
 				98A4EB082A81330C008E4996 /* PlaygroundUITests.m in Sources */,
 				98A4EAFF2A811DFA008E4996 /* LandmarksUITests.m in Sources */,
+				982285222A824E9F006E2696 /* HierarchicalUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPrincipalClass = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.pacia.LandmarksUITests;
@@ -559,6 +564,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPrincipalClass = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.pacia.LandmarksUITests;
