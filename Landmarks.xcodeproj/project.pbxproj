@@ -20,6 +20,7 @@
 		98A2613F28B19AC900FEE658 /* LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2613E28B19AC900FEE658 /* LandmarkList.swift */; };
 		98A2614128B19C3200FEE658 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2614028B19C3200FEE658 /* LandmarkDetail.swift */; };
 		98A4EAFF2A811DFA008E4996 /* LandmarksUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4EAFE2A811DFA008E4996 /* LandmarksUITests.m */; };
+		98A4EB082A81330C008E4996 /* PlaygroundUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4EB072A81330C008E4996 /* PlaygroundUITests.m */; };
 		98CF8FBD28B249F600993DE6 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF8FBC28B249F600993DE6 /* FavoriteButton.swift */; };
 		98CF8FC028B24FA800993DE6 /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF8FBF28B24FA800993DE6 /* HexagonParameters.swift */; };
 		98CF8FC228B2519700993DE6 /* BadgeBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF8FC128B2519700993DE6 /* BadgeBackground.swift */; };
@@ -60,6 +61,7 @@
 		98A2614028B19C3200FEE658 /* LandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
 		98A4EAFC2A811DFA008E4996 /* LandmarksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LandmarksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A4EAFE2A811DFA008E4996 /* LandmarksUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LandmarksUITests.m; sourceTree = "<group>"; };
+		98A4EB072A81330C008E4996 /* PlaygroundUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaygroundUITests.m; sourceTree = "<group>"; };
 		98CF8FBC28B249F600993DE6 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		98CF8FBF28B24FA800993DE6 /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
 		98CF8FC128B2519700993DE6 /* BadgeBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeBackground.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				98A4EAFE2A811DFA008E4996 /* LandmarksUITests.m */,
+				98A4EB072A81330C008E4996 /* PlaygroundUITests.m */,
 			);
 			path = LandmarksUITests;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98A4EB082A81330C008E4996 /* PlaygroundUITests.m in Sources */,
 				98A4EAFF2A811DFA008E4996 /* LandmarksUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
