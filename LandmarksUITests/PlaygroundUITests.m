@@ -11,7 +11,7 @@
 }
 
 - (void)setUp {
-  NSLog(@"%@: instance tearDown()", NSStringFromClass([self class]));
+  NSLog(@"%@: instance setUp()", NSStringFromClass([self class]));
 }
 
 - (void)tearDown {
@@ -42,7 +42,7 @@
 }
 
 - (void)setUp {
-  NSLog(@"%@: instance tearDown()", NSStringFromClass([self class]));
+  NSLog(@"%@: instance setUp()", NSStringFromClass([self class]));
 }
 
 - (void)tearDown {
