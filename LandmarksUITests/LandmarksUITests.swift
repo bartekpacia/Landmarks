@@ -14,6 +14,19 @@ final class LandmarksUITests: XCTestCase {
     app.launch()
   }
 
+  func testDeviceRotation() {
+    let exp1 = expectation(description: "Wait for screen to settle after rotation (1)")
+    let exp2 = expectation(description: "Wait for screen to settle after rotation (2)")
+    let exp3 = expectation(description: "Wait for screen to settle after rotation (3)")
+
+    XCUIDevice.shared.orientation = .landscapeLeft
+    XCTWaiter.wait(for: [exp1], timeout: 2)
+    XCUIDevice.shared.orientation = .landscapeRight
+    XCTWaiter.wait(for: [exp2], timeout: 2)
+    XCUIDevice.shared.orientation = .portrait
+    XCTWaiter.wait(for: [exp3], timeout: 2)
+  }
+
   func testTapOnSecondLandmarksView() {
     let text = "Landmarks"
     let index = 2
