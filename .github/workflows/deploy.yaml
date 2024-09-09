@@ -1,0 +1,54 @@
+name: Test E2E
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  main:
+    name: Test on iOS
+    runs-on: macos-latest
+
+    steps:
+      - name: Clone repository (only needed for the e2e directory)
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 8
+
+      - name: Install Maestro CLI
+        run: |
+          brew tap mobile-dev-inc/tap
+          brew install maestro@1.39-dev.1
+
+      - name: Check if Maestro CLI executable starts up
+        run: |
+          maestro --help
+          maestro --version
+
+      - name: Run simulator
+        run: xcrun simctl boot iPhone\ 15
+
+      - name: Wait for simulator to boot
+        run: xcrun simctl bootstatus iPhone\ 15
+
+      - name: Build app
+        run: ./build_app
+
+      - name: Install app
+        run: xcrun simctl install booted derivedData/Build/Products/Debug-iphonesimulator/Landmarks.app
+
+      - name: Launch app
+        run: xcrun simctl launch booted pl.baftek.Landmarks
+
+      - name: Take screenshot
+        run: xcrun simctl io booted screenshot screenshot.png
+
+      - name: Upload screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot.png
+          path: screenshot.png
