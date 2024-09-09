@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "41A01E82-DF18-45BB-BAAA-DDF20B807161",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Landmarks.xcodeproj",
+      "identifier" : "98A2611928B169B900FEE658",
+      "name" : "Landmarks"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Landmarks.xcodeproj",
+        "identifier" : "98E2DE0A28F92D11004BB04E",
+        "name" : "LandmarksUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+set -eu
+
+xcodebuild build \
+	-project Landmarks.xcodeproj \
+	-scheme Landmarks \
+	-configuration Debug \
+	-sdk iphonesimulator \
+	-destination 'generic/platform=iOS Simulator' \
+	-derivedDataPath derivedData
+
+echo "App binary generated in derivedData/Build/Products/Debug-iphonesimulator/Landmarks.app"
