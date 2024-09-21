@@ -1,14 +1,12 @@
 import SwiftUI
 
 struct ContentView: View {
-  var body: some View {
-    LandmarkList()
-  }
+    var body: some View {
+        LandmarkList()
+    }
 }
 
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
+#Preview {
     ContentView()
-      .environmentObject(ModelData())
-  }
+        .environmentObject(ModelData())
 }
