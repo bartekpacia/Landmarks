@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LandmarkList: View {
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @State private var showFavoritesOnly = false
 
     var filteredLandmarks: [Landmark] {
@@ -34,5 +34,6 @@ struct LandmarkList: View {
 }
 
 #Preview {
-    LandmarkList().environmentObject(ModelData())
+    LandmarkList()
+        .environment(ModelData())
 }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     var landmark: Landmark
 
     var landmarkIndex: Int {
@@ -9,6 +9,8 @@ struct LandmarkDetail: View {
     }
 
     var body: some View {
+        @Bindable var modelData = modelData
+        
         ScrollView {
             MapView(coordinate: landmark.locationCoordinate)
                 .ignoresSafeArea(edges: .top)
@@ -54,5 +56,5 @@ struct LandmarkDetail: View {
     let modelData = ModelData()
 
     LandmarkDetail(landmark: modelData.landmarks[1])
-        .environmentObject(modelData)
+        .environment(modelData)
 }
